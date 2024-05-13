@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3001
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use("/public/assets", express.static(__dirname + "/public/assets"));
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 require("./routes/html-routes")(app);
