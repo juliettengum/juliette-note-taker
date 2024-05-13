@@ -6,11 +6,19 @@ const fs = require("fs");
 // Sets up the express app
 const app = express();
 const PORT = process.env.PORT || 3001
-
 // Sets up the express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use("/public/assets", express.static(__dirname + "/public/assets"));
+
+// Middleware to set the correct MIME type for CSS files
+app.use((req, res, next) => {
+    if (req.path.endsWith('.css')) {
+      res.header('Content-Type', 'text/css');
+    }
+    next();
+  });
+  app.use("/public/assets", express.static(__dirname + "/public/assets"));
+  
 
 //Routes
 require("./routes/html-routes")(app);
