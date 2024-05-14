@@ -1,11 +1,16 @@
 const fs = require("fs");
 const path = require("path");
+const data = JSON.parse(fs.readFileSync("../db/db.json", "utf8"));
 
 // Function to read data from the database file
 const readData = () => {
     const dataFilePath = path.join(__dirname, "../db/db.json");
     return JSON.parse(fs.readFileSync(dataFilePath, "utf8"));
 };
+
+const getRandomInt = (max) => {
+    return Math.floor(Math.random() * max);
+}
 
 // Function to write data to the database file
 const writeData = (data) => {
@@ -14,37 +19,50 @@ const writeData = (data) => {
 };
 
 module.exports = function (app) {
+    let data = readData();
+
     app.get("/api/notes", (req, res) => {
-        const data = readData();
+
         res.json(data);
+
     });
 
-    app.get("/api/notes/:id", (req, res) => {
-        const data = readData();
-        const noteId = req.params.id;
-        const note = data.find((note) => note.id === noteId);
-        if (note) {
-            res.json(note);
-        } else {
-            res.status(404).json({ message: "Note not found" });
-        }
+    app.get("/api/notes/:id", function(req, res) {
+
+        let idFind = data.filter((s) => s.id === Number(req.params.id));
+        const result = idFind.length > 0 ? idFind : null ;
+        res.json(result);
+
     });
 
-    app.post("/api/notes", (req, res) => {
-        const newNote = req.body;
-        const data = readData();
-        newNote.id = (data.length + 1).toString(); // Assign a unique ID
+    app.post("/api/notes", function(req, res) {
+
+        let newNote = req.body;
+        let uniqueId = (data.length);
+        newNote.id = Number(uniqueId) + getRandomInt(30);
         data.push(newNote);
-        writeData(data);
-        res.json(newNote);
+        
+        fs.writeFileSync("./db/db.json", JSON.stringify(data), function(err) {
+            if (err) throw (err);        
+        }); 
+
+        res.json(data);    
+
     });
 
-    app.delete("/api/notes/:id", (req, res) => {
+
+
+    app.delete("/api/notes/:id", function(req, res) {
+
         const noteId = req.params.id;
-        let data = readData();
-        data = data.filter((note) => note.id !== noteId);
-        writeData(data);
-        res.json(data);
-    });
-};
+        console.log(`Deleting note with id ${noteId}`);
+        let idFind = data.filter((s) => s.id != Number(noteId))
+        fs.writeFileSync("./db/db.json", JSON.stringify(idFind));
+        res.json(idFind);
+    }); 
+
+}
+
+
+
 

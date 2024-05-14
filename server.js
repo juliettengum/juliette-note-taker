@@ -1,7 +1,6 @@
 // Dependencies
 const express = require("express");
-const fs = require("fs");
-
+const path = require("path");
 
 // Sets up the express app
 const app = express();
@@ -17,7 +16,17 @@ app.use((req, res, next) => {
     }
     next();
   });
-  app.use("/public/assets", express.static(__dirname + "/public/assets"));
+
+// Middleware to set the correct MIME type for JS files
+app.use((req, res, next) => {
+    if (req.path.endsWith('.js')) {
+      res.header('Content-Type', 'application/javascript');
+    }
+    next();
+  });
+  
+
+  app.use("/assets", express.static(path.join(__dirname, "public", "assets")));
   
 
 //Routes
