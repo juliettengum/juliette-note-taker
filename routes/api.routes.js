@@ -10,6 +10,7 @@ const editNote = (updatedNotesArray) => {
   });
 };
 
+
 // ROUTING
 module.exports = (app) => {
   // GET REQUEST
