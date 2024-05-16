@@ -1,10 +1,11 @@
 # juliette-note-taker
 ## Description
-Note Taker is a simple web application built with Express.js that allows users to write and save notes. It provides a user-friendly interface for organizing thoughts and keeping track of tasks.
+- Note Taker is a simple web application built with Express.js that allows users to write and save notes. It provides a user-friendly interface for organizing thoughts and keeping track of tasks.
 
 ## User Story
 
-As a small business owner, I want to be able to write and save notes so that I can organize my thoughts and keep track of tasks I need to complete.
+- As a small business owner,
+- - I want to be able to write and save notes so that I can organize my thoughts and keep track of tasks I need to complete.
 
 ## Acceptance Criteria
 
@@ -17,28 +18,28 @@ As a small business owner, I want to be able to write and save notes so that I c
 
 ## Installation
 
-Clone this repository.
-Install dependencies by running npm install.
-Run the application by executing npm start.
-Navigate to http://localhost:3001 in your web browser to view the application.
+- Clone this repository.
+- Install dependencies by running npm install.
+- Run the application by executing npm start.
+- Navigate to  http://localhost:3001/ in your web browser to view the application.
 
 ## Functionality Overview
 
-The application utilizes db.json file on the back end to store and retrieve notes using the fs module.
-HTML routes:
-GET /notes returns the notes.html file.
-GET * returns the index.html file.
-API routes:
-GET /api/notes reads the db.json file and returns all saved notes as JSON.
-POST /api/notes receives a new note to save on the request body, adds it to the db.json file, and returns the new note to the client.
+- The application utilizes db.json file on the back end to store and retrieve notes using the fs module.
+- HTML routes:
+- GET /notes returns the notes.html file.
+- GET * returns the index.html file.
+- API routes:
+- GET /api/notes reads the db.json file and returns all saved notes as JSON.
+- POST /api/notes receives a new note to save on the request body, adds it to the db.json file, and returns the new note to the client.
 
 
 ## Technologies Used
 
-Express.js
-HTML
-CSS
-JavaScript
+- Express.js
+- HTML
+- CSS
+- JavaScript
 
 
 ## Screenshot
@@ -57,9 +58,9 @@ https://github.com/juliettengum/juliette-note-taker/assets/160192167/dc1883fc-0b
 
 ## Contributors
 
-my course instructor Mr Christopher and my humble self Juliette Ngum
+- my course instructor Mr Christopher and my humble self Juliette Ngum
 
 ## License
 
-This project is licensed under the MIT License.
+- This project is licensed under the MIT License.
 
