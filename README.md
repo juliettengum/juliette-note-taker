@@ -20,7 +20,7 @@ When I click on the "New Note" button in the navigation at the top of the page, 
 Clone this repository.
 Install dependencies by running npm install.
 Run the application by executing npm start.
-Navigate to http://localhost:3000 in your web browser to view the application.
+Navigate to http://localhost:3001 in your web browser to view the application.
 
 ## Functionality Overview
 
@@ -49,7 +49,10 @@ JavaScript
 
 ## Video
 
-<video controls src="Note Taker - Personal.mp4" title="Title"></video>
+https://github.com/juliettengum/juliette-note-taker/assets/160192167/dc1883fc-0b9c-4779-b5a5-41b8840527cf
+
+
+
 
 
 ## Contributors
